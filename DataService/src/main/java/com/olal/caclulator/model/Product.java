@@ -1,5 +1,7 @@
+package com.olal.caclulator.model;
+
 import javax.persistence.*;
-import javax.validation.constraints.*;
+
 
 @Entity
 @Table(name = "products")
@@ -18,32 +20,31 @@ public class Product {
     }
 
     @Column(nullable = false)
-    @NotNull
-    @Size(max = 100)
+
     public String getName() {
         return name;
     }
 
     @Column(nullable = false)
-    @NotNull
+
     public Double getProteins() {
         return proteins;
     }
 
     @Column(nullable = false)
-    @NotNull
+
     public Double getFats() {
         return fats;
     }
 
     @Column(nullable = false)
-    @NotNull
+
     public Double getCarbohydrates() {
         return carbohydrates;
     }
 
     @Column(nullable = false)
-    @NotNull
+
     public Double getCalories() {
         return calories;
     }

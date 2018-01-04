@@ -1,6 +1,7 @@
+package com.olal.caclulator.model;
+
 import org.hibernate.annotations.Type;
 import javax.persistence.*;
-import javax.validation.constraints.*;
 import java.util.Date;
 
 @Entity
@@ -22,28 +23,21 @@ public class User {
     }
 
     @Column(unique = true, nullable = false)
-    @NotNull
-    @Size(max = 255)
     public String getEmail() {
         return email;
     }
 
     @Column(name = "last_name", nullable = false)
-    @NotNull
-    @Size(max = 50)
     public String getLastName() {
         return lastName;
     }
 
     @Column(name = "first_name", nullable = false)
-    @NotNull
-    @Size(max = 50)
     public String getFirstName() {
         return firstName;
     }
 
     @Column(name = "is_admin", nullable = false)
-    @NotNull
     public boolean isAdmin() {
         return isAdmin;
     }
@@ -55,15 +49,12 @@ public class User {
     }
 
     @Column(name = "registration_date", nullable = false)
-    @NotNull
     @Temporal(TemporalType.TIMESTAMP)
     public Date getRegistrationDate() {
         return registrationDate;
     }
 
     @Column(nullable = false)
-    @NotNull
-    @Size(max = 255)
     public String getPassword() {
         return password;
     }

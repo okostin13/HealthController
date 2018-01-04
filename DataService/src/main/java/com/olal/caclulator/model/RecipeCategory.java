@@ -1,5 +1,7 @@
+package com.olal.caclulator.model;
+
 import javax.persistence.*;
-import javax.validation.constraints.*;
+
 
 @Entity
 @Table(name = "recipes_categories")
@@ -15,15 +17,13 @@ public class RecipeCategory {
     }
 
     @Column(nullable = false)
-    @NotNull
-    @Size(max = 100)
+
     public String getTitle() {
         return title;
     }
 
     @Column(nullable = false)
-    @NotNull
-    @Size(max = 100)
+
     public String getDescription() {
         return description;
     }
