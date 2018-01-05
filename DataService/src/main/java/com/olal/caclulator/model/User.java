@@ -1,6 +1,5 @@
 package com.olal.caclulator.model;
 
-import org.hibernate.annotations.Type;
 import javax.persistence.*;
 import java.util.Date;
 
@@ -27,12 +26,12 @@ public class User {
         return email;
     }
 
-    @Column(name = "last_name", nullable = false)
+    @Column(name = "last_name", nullable = false, length = 50)
     public String getLastName() {
         return lastName;
     }
 
-    @Column(name = "first_name", nullable = false)
+    @Column(name = "first_name", nullable = false, length = 50)
     public String getFirstName() {
         return firstName;
     }

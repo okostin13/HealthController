@@ -2,7 +2,6 @@ package com.olal.caclulator.model;
 
 import javax.persistence.*;
 
-
 @Entity
 @Table(name = "products")
 public class Product {
@@ -19,32 +18,27 @@ public class Product {
         return id;
     }
 
-    @Column(nullable = false)
-
+    @Column(nullable = false, length = 100)
     public String getName() {
         return name;
     }
 
     @Column(nullable = false)
-
     public Double getProteins() {
         return proteins;
     }
 
     @Column(nullable = false)
-
     public Double getFats() {
         return fats;
     }
 
     @Column(nullable = false)
-
     public Double getCarbohydrates() {
         return carbohydrates;
     }
 
     @Column(nullable = false)
-
     public Double getCalories() {
         return calories;
     }

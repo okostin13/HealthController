@@ -15,14 +15,12 @@ public class ProductCategory {
         return id;
     }
 
-    @Column(nullable = false)
-
+    @Column(nullable = false, length = 100)
     public String getTitle() {
         return title;
     }
 
-    @Column(nullable = false)
-
+    @Column(nullable = false, length = 200)
     public String getDescription() {
         return description;
     }

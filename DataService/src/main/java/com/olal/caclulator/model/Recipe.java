@@ -20,33 +20,28 @@ public class Recipe {
         return id;
     }
 
-    @Column(nullable = false)
-
+    @Column(nullable = false, length = 100)
     public String getName() {
         return name;
     }
 
     @Column(name = "is_default", nullable = false)
-
     public boolean isDefault() {
         return isDefault;
     }
 
-    @Column(nullable = false)
-
+    @Column(nullable = false, 1000)
     public String getDescription() {
         return description;
     }
 
     @Column(name = "creation_date", nullable = false)
-
     @Temporal(TemporalType.TIMESTAMP)
     public Date getCreationDate() {
         return creationDate;
     }
 
     @Column(nullable = false)
-
     public PGInterval getDuration() {
         return duration;
     }
