@@ -1,11 +1,13 @@
 package com.olal.caclulator.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
+import java.util.Set;
 
 @Entity
 @Table(name = "users")
-public class User {
+public class User implements Serializable {
     private Integer id;
     private String email;
     private String lastName;
@@ -14,6 +16,32 @@ public class User {
     private Date birthDate;
     private Date registrationDate;
     private String password;
+    private Set<Recipe> recipes;
+
+    public User(){
+
+    }
+
+    public User(String email, String lastName, String firstName, boolean isAdmin, Date birthDate, Date registrationDate, String password) {
+        this.email = email;
+        this.lastName = lastName;
+        this.firstName = firstName;
+        this.isAdmin = isAdmin;
+        this.birthDate = birthDate;
+        this.registrationDate = registrationDate;
+        this.password = password;
+    }
+
+    public User(String email, String lastName, String firstName, boolean isAdmin, Date birthDate, Date registrationDate, String password, Set<Recipe> recipes) {
+        this.email = email;
+        this.lastName = lastName;
+        this.firstName = firstName;
+        this.isAdmin = isAdmin;
+        this.birthDate = birthDate;
+        this.registrationDate = registrationDate;
+        this.password = password;
+        this.recipes = recipes;
+    }
 
     @Id
     @GeneratedValue
@@ -58,6 +86,13 @@ public class User {
         return password;
     }
 
+    @ManyToMany
+    @JoinTable(name = "user_recipes", joinColumns = @JoinColumn(name = "user_id", nullable = false, updatable = false),
+    inverseJoinColumns = @JoinColumn(name = "recipe_id", nullable = false, updatable = false))
+    public Set<Recipe> getRecipes() {
+        return recipes;
+    }
+
     public void setId(Integer id) {
         this.id = id;
     }
@@ -88,5 +123,9 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public void setRecipes(Set<Recipe> recipes) {
+        this.recipes = recipes;
     }
 }

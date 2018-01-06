@@ -1,16 +1,42 @@
 package com.olal.caclulator.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
+import java.util.Set;
 
 @Entity
 @Table(name = "products")
-public class Product {
+public class Product implements Serializable {
     private Integer id;
     private String name;
     private Double proteins;
     private Double fats;
     private Double carbohydrates;
     private Double calories;
+    private ProductCategory category;
+    private Set<RecipeProduct> recipeProducts;
+
+    public Product() {
+    }
+
+    public Product(String name, Double proteins, Double fats, Double carbohydrates, Double calories, ProductCategory category) {
+        this.name = name;
+        this.proteins = proteins;
+        this.fats = fats;
+        this.carbohydrates = carbohydrates;
+        this.calories = calories;
+        this.category = category;
+    }
+
+    public Product(String name, Double proteins, Double fats, Double carbohydrates, Double calories, ProductCategory category, Set<RecipeProduct> recipeProducts) {
+        this.name = name;
+        this.proteins = proteins;
+        this.fats = fats;
+        this.carbohydrates = carbohydrates;
+        this.calories = calories;
+        this.category = category;
+        this.recipeProducts = recipeProducts;
+    }
 
     @Id
     @GeneratedValue
@@ -43,6 +69,17 @@ public class Product {
         return calories;
     }
 
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    public ProductCategory getCategory() {
+        return category;
+    }
+
+    @OneToMany(mappedBy = "pk.product")
+    public Set<RecipeProduct> getRecipeProducts() {
+        return recipeProducts;
+    }
+
     public void setId(Integer id) {
         this.id = id;
     }
@@ -65,5 +102,13 @@ public class Product {
 
     public void setCalories(Double calories) {
         this.calories = calories;
+    }
+
+    public void setCategory(ProductCategory category) {
+        this.category = category;
+    }
+
+    public void setRecipeProducts(Set<RecipeProduct> recipeProducts) {
+        this.recipeProducts = recipeProducts;
     }
 }

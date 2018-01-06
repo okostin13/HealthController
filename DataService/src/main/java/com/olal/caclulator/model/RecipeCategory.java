@@ -1,14 +1,32 @@
 package com.olal.caclulator.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
+import java.util.Set;
 
 
 @Entity
 @Table(name = "recipes_categories")
-public class RecipeCategory {
+public class RecipeCategory implements Serializable {
     private Integer id;
     private String title;
     private String description;
+    private Set<Recipe> recipes;
+
+    public RecipeCategory(){
+
+    }
+
+    public RecipeCategory(String title, String description){
+        this.title = title;
+        this.description = description;
+    }
+
+    public RecipeCategory(String title, String description, Set<Recipe> recipes){
+        this.title = title;
+        this.description = description;
+        this.recipes = recipes;
+    }
 
     @Id
     @GeneratedValue
@@ -26,6 +44,11 @@ public class RecipeCategory {
         return description;
     }
 
+    @OneToMany(mappedBy = "recipes")
+    public Set<Recipe> getRecipes() {
+        return recipes;
+    }
+
     public void setId(Integer id) {
         this.id = id;
     }
@@ -36,5 +59,9 @@ public class RecipeCategory {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public void setRecipes(Set<Recipe> recipes) {
+        this.recipes = recipes;
     }
 }
